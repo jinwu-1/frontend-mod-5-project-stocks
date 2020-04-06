@@ -74,6 +74,16 @@ class App extends React.Component {
     .then(r => r.json())
     .then(this.handleResponse)
   }
+  
+  addStockToPortfolio = (stockInfo) => {
+    fetch("http://localhost:3000/stocks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(stockInfo)
+    })
+  }
 
   renderRegisterForm = () => {
     return <RegisterForm handleSubmit={this.handleRegister}/>
@@ -84,11 +94,11 @@ class App extends React.Component {
   }
 
   renderProfile = () => {
-    return <ProfileContainer user={this.state.user} token={this.state.token}/>
+    return <ProfileContainer user={this.state.user} token={this.state.token} portfolio_stocks={this.state.portfolio_stocks}/>
   }
 
   renderStocks = () => {
-    return <StocksContainer stocks={this.state.stocks}/>
+    return <StocksContainer stocks={this.state.stocks} addStockToPortfolio={this.addStockToPortfolio} user={this.state.user}/>
   }
 
   render(){

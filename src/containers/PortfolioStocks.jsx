@@ -11,6 +11,7 @@ class PortfolioStock extends Component {
                 <h4>{symbol} : {name}</h4>
                 <h5>${price}</h5>
                 <h6>{exchange}</h6>
+                <button>delete</button>
             </div>
         );
     }
