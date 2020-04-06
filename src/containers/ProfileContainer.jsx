@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Portfolio from './Portfolio'
 
 class ProfileContainer extends Component {
 
@@ -17,12 +18,20 @@ class ProfileContainer extends Component {
   }
 
   render() {
-    console.log(this.state.portfolios)
     let {first_name, last_name} = this.props.user
+
+    let filteredArray = this.state.portfolios.filter(portfolio => {
+      return portfolio.username === this.props.user.username
+    })
+
+    let portfoliosComponentArray = filteredArray.map(portfolio => {
+      return <Portfolio key={portfolio.id} portfolio={portfolio} />
+    })
 
     return (
       <div>
           <h1>{first_name} {last_name}'s Profile</h1>
+          {portfoliosComponentArray}
       </div>
     );
   }
