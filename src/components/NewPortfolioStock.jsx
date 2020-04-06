@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class NewPortfolioStock extends Component {
 
     state = {
-        stock: {...this.props.stock, portfolio_id: this.props.user.id}
+        stock: {...this.props.stock, portfolio_id: this.props.portfolio.id}
     }
 
     handleSubmit = (e) => {

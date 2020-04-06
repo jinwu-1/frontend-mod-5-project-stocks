@@ -17,7 +17,10 @@ class App extends React.Component {
       cash: ""
     },
     token: "",
-    stocks: []
+    portfolio: {
+      stocks: []
+    },
+    all_stocks: []
   }
 
   componentDidMount() {
@@ -35,9 +38,21 @@ class App extends React.Component {
       .then(r=> r.json())
       .then((stocksArray) => {
         this.setState({
-          stocks: stocksArray.symbolsList.slice(0,200)
+          all_stocks: stocksArray.symbolsList.slice(0,200)
         })
       })
+
+    fetch("http://localhost:3000/portfolios")
+      .then(r => r.json())
+      .then(portfoliosArray => {
+        let filteredArray = portfoliosArray.filter(portfolio => {
+          return portfolio.user.username === this.state.user.username
+        })
+        this.setState({
+          portfolio: filteredArray[0]
+        })
+      })
+
   }
 
   handleResponse = (response) => {
@@ -76,13 +91,18 @@ class App extends React.Component {
   }
   
   addStockToPortfolio = (stockInfo) => {
-    fetch("http://localhost:3000/stocks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(stockInfo)
-    })
+    console.log(stockInfo)
+    // fetch("http://localhost:3000/stocks", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify(stockInfo)
+    // })
+    // .then(r => r.json())
+    // .then(results => {
+    //   console.log(results)
+    // })
   }
 
   renderRegisterForm = () => {
@@ -94,11 +114,11 @@ class App extends React.Component {
   }
 
   renderProfile = () => {
-    return <ProfileContainer user={this.state.user} token={this.state.token} portfolio_stocks={this.state.portfolio_stocks}/>
+    return <ProfileContainer user={this.state.user} token={this.state.token} portfolio={this.state.portfolio}/>
   }
 
   renderStocks = () => {
-    return <StocksContainer stocks={this.state.stocks} addStockToPortfolio={this.addStockToPortfolio} user={this.state.user}/>
+    return <StocksContainer stocks={this.state.all_stocks} addStockToPortfolio={this.addStockToPortfolio} portfolio={this.state.portfolio}/>
   }
 
   render(){
