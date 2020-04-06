@@ -35,7 +35,7 @@ class App extends React.Component {
       .then(r=> r.json())
       .then((stocksArray) => {
         this.setState({
-          stocks: stocksArray.symbolsList
+          stocks: stocksArray.symbolsList.slice(0,200)
         })
       })
   }
