@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react'
 import Stock from './Stock'
 
-class StocksContainer extends Component {
+class StocksContainer extends React.Component {
 
-  render() {
-    let stocksComponentArray = this.props.stocks.map(stock => {
-        return <Stock key={stock.symbol} stock={stock} addStockToPortfolio={this.props.addStockToPortfolio} />
-    })
-
-    return (
-      <div>
-          {stocksComponentArray}
-      </div>
-    );
-  }
+    render() {
+        let stocksComponentArrray = this.props.stocks.map(stock => {
+            return <Stock key={stock.symbol} stock={stock} />
+        })
+        return (
+            <div>
+                {stocksComponentArrray}
+            </div>
+        )
+    }
 }
 
-export default StocksContainer;
+export default StocksContainer

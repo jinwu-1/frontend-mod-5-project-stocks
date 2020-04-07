@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Stock extends React.Component {
+class ProfileStock extends React.Component {
 
     render() {
         let {symbol, name, price, exchange} = this.props.stock
@@ -14,4 +14,4 @@ class Stock extends React.Component {
     }
 }
 
-export default Stock
+export default ProfileStock
