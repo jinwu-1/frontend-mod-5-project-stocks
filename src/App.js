@@ -42,16 +42,16 @@ class App extends React.Component {
         })
       })
 
-    fetch("http://localhost:3000/portfolios")
-      .then(r => r.json())
-      .then(portfoliosArray => {
-        let filteredArray = portfoliosArray.filter(portfolio => {
-          return portfolio.user.username === this.state.user.username
-        })
-        this.setState({
-          portfolio: filteredArray[0]
-        })
-      })
+    // fetch("http://localhost:3000/portfolios")
+    //   .then(r => r.json())
+    //   .then(portfoliosArray => {
+    //     let filteredArray = portfoliosArray.filter(portfolio => {
+    //       return portfolio.user.username === this.state.user.username
+    //     })
+    //     this.setState({
+    //       portfolio: filteredArray[0]
+    //     })
+    //   })
 
   }
 
@@ -89,6 +89,20 @@ class App extends React.Component {
     .then(r => r.json())
     .then(this.handleResponse)
   }
+
+  addPortfolio = (info) => {
+    fetch("http://localhost:3000/portfolios", {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(info)
+    })
+    .then(r => r.json())
+    .then(results => {
+      console.log(results)
+    })
+  }
   
   addStockToPortfolio = (stockInfo) => {
     console.log(stockInfo)
@@ -114,7 +128,7 @@ class App extends React.Component {
   }
 
   renderProfile = () => {
-    return <ProfileContainer user={this.state.user} token={this.state.token} portfolio={this.state.portfolio}/>
+    return <ProfileContainer user={this.state.user} token={this.state.token} portfolio={this.state.portfolio} addPortfolio={this.addPortfolio}/>
   }
 
   renderStocks = () => {
@@ -122,6 +136,7 @@ class App extends React.Component {
   }
 
   render(){
+    console.log(this.state)
     return (
       <div className="App">
         <NavBar/>
