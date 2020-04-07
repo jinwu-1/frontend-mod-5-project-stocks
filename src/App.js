@@ -42,16 +42,16 @@ class App extends React.Component {
         })
       })
 
-    // fetch("http://localhost:3000/portfolios")
-    //   .then(r => r.json())
-    //   .then(portfoliosArray => {
-    //     let filteredArray = portfoliosArray.filter(portfolio => {
-    //       return portfolio.user.username === this.state.user.username
-    //     })
-    //     this.setState({
-    //       portfolio: filteredArray[0]
-    //     })
-    //   })
+    fetch("http://localhost:3000/portfolios")
+      .then(r => r.json())
+      .then(portfoliosArray => {
+        let filteredArray = portfoliosArray.filter(portfolio => {
+          return portfolio.user.username === this.state.user.username
+        })
+        this.setState({
+          portfolio: filteredArray[0]
+        })
+      })
 
   }
 
@@ -136,7 +136,6 @@ class App extends React.Component {
   }
 
   render(){
-    console.log(this.state)
     return (
       <div className="App">
         <NavBar/>

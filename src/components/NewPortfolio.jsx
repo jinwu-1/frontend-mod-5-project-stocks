@@ -3,22 +3,33 @@ import React, { Component } from 'react';
 class NewPortfolio extends Component {
 
     state = {
-        user_id: ""
+        portfolioInfo: {
+            user_id: "",
+            name: ""
+        },
+        clicked: false
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
+        this.props.addPortfolio(this.state.portfolioInfo)
+    }
+
+    handleChange = (e) => {
+        let {name, value} = e.target
         this.setState({
-            user_id: this.props.user.id
+          [name]: value,
+          user_id: this.props.user.id,
         })
-        this.props.addPortfolio(this.state)
     }
 
     render() {
-        console.log(this.state)
+        let {name} = this.state
         return (
             <form onSubmit={this.handleSubmit}>
-                <input type="submit" value="Create"/>
+                <label htmlFor="name">name:</label>
+                <input type="text" autoComplete="off" name="name" value={name} onChange={this.handleChange}/>
+                <input type="submit" value="Create Portfolio"/>
             </form>
         );
     }

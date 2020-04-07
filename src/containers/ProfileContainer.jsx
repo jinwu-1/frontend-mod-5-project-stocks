@@ -6,7 +6,6 @@ class ProfileContainer extends Component {
 
   render() {
     let {first_name, last_name} = this.props.user
-    console.log(this.props.user.id)
     return (
       <div>
           <h1>{first_name} {last_name}'s Profile</h1>
