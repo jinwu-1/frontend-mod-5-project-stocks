@@ -11,6 +11,7 @@ class App extends React.Component {
 
   state = {
     user: {
+      id: "",
       username: "",
       first_name: "",
       last_name: "",
@@ -95,8 +96,8 @@ class App extends React.Component {
     })
   }
 
-  updateStock = (userID, amount) => {
-    let newAmount = this.state.user.cash - amount
+  updateCash = (userID, amount) => {
+    let newAmount = (this.state.user.cash - amount).toString()
     let newObject = {...this.state.user, cash: newAmount}
     fetch(`http://localhost:3000/users/${userID}`, {
       method: "PATCH",
@@ -107,6 +108,7 @@ class App extends React.Component {
     })
     .then(r => r.json())
     .then(results => {
+      console.log(results, "before setState")
       this.setState({
         user: results
       })
@@ -145,12 +147,13 @@ class App extends React.Component {
     return <StocksContainer 
       stocks={this.state.allStocks} 
       addStockToPortfolio={this.addStockToPortfolio}
-      updateStock={this.updateStock}
+      updateCash={this.updateCash}
       user={this.state.user}
     />
   }
 
   render(){
+    console.log(this.state.user)
     return (
       <div className="App">
         <NavBar/>

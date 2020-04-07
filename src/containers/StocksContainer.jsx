@@ -8,7 +8,7 @@ class StocksContainer extends React.Component {
 
     render() {
         let stocksComponentArrray = this.props.stocks.map(stock => {
-            return <Stock key={stock.symbol} stock={stock} user={this.props.user} addStockToPortfolio={this.props.addStockToPortfolio} updateStock={this.props.updateStock}/>
+            return <Stock key={stock.symbol} stock={stock} user={this.props.user} addStockToPortfolio={this.props.addStockToPortfolio} updateCash={this.props.updateCash}/>
         })
 
         return (
