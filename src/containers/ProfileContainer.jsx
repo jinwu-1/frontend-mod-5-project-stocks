@@ -7,7 +7,7 @@ class ProfileContainer extends React.Component {
         let {first_name, last_name, cash} = this.props.user
 
         let stocksComponentArrray = this.props.user.stocks.map(stock => {
-            return <ProfileStock key={stock.id} stock={stock} />
+            return <ProfileStock key={stock.id} stock={stock} deleteStock={this.props.deleteStock}/>
         })
         return (
             <div>

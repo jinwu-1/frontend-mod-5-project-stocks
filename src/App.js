@@ -77,6 +77,40 @@ class App extends React.Component {
     .then(this.handleResponse)
   }
 
+  addStockToPortfolio = (stockInfo) => {
+    fetch("http://localhost:3000/stocks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(stockInfo)
+    })
+    .then(r => r.json())
+    .then((results) => {
+      let newArray = [...this.state.user.stocks, results]
+      let newObject = {...this.state.user, stocks: newArray}
+      this.setState({
+        user: newObject
+      })
+    })
+  }
+
+  deleteStock = (stockID) => {
+    fetch(`http://localhost:3000/stocks/${stockID}`, {
+      method: "DELETE"
+    })
+    .then(r => r.json())
+    .then(() => {
+      let filteredArray = this.state.user.stocks.filter(stock => {
+        return stock.id !== stockID
+      })
+      let newObject = {...this.state.user, stocks: filteredArray}
+      this.setState({
+        user: newObject
+      })
+    })
+  }
+
   renderRegisterForm = () => {
     return <RegisterForm handleSubmit={this.handleRegister}/>
   }
@@ -86,11 +120,11 @@ class App extends React.Component {
   }
 
   renderProfile = () => {
-    return <ProfileContainer user={this.state.user} token={this.state.token}/>
+    return <ProfileContainer user={this.state.user} token={this.state.token} deleteStock={this.deleteStock}/>
   }
 
   renderStocks = () => {
-    return <StocksContainer stocks={this.state.allStocks}/>
+    return <StocksContainer stocks={this.state.allStocks} addStockToPortfolio={this.addStockToPortfolio} user={this.state.user}/>
   }
 
   render(){
