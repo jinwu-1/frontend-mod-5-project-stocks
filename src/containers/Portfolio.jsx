@@ -4,7 +4,6 @@ import PortfolioStocks from './PortfolioStocks'
 class Portfolio extends Component {
 
     render() {
-
   
         let portfolioStockComponent = this.props.portfolio.stocks.map(stock => {
             return <PortfolioStocks key={stock.id} stock={stock} />
@@ -15,6 +14,7 @@ class Portfolio extends Component {
         return (
             <div className="portfolio-card">
                 <h2> {name} </h2>
+                <h4> Cash: ${this.props.portfolio.user.cash}</h4>
                 {portfolioStockComponent}
             </div>
         );

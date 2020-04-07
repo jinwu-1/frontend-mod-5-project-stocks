@@ -3,16 +3,13 @@ import React, { Component } from 'react';
 class NewPortfolio extends Component {
 
     state = {
-        portfolioInfo: {
-            user_id: "",
-            name: ""
-        },
-        clicked: false
+        user_id: "",
+        name: ""
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.addPortfolio(this.state.portfolioInfo)
+        this.props.addPortfolio(this.state)
     }
 
     handleChange = (e) => {

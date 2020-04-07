@@ -12,7 +12,6 @@ class Stock extends Component {
           <h5>${price}</h5>
           <h6>{exchange}</h6>
           <NewPortfolioStock 
-            portfolio={this.props.portfolio} 
             stock={this.props.stock} 
             addStockToPortfolio={this.props.addStockToPortfolio}
           />

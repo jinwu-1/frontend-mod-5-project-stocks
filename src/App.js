@@ -17,9 +17,6 @@ class App extends React.Component {
       cash: ""
     },
     token: "",
-    portfolio: {
-      stocks: []
-    },
     all_stocks: []
   }
 
@@ -39,17 +36,6 @@ class App extends React.Component {
       .then((stocksArray) => {
         this.setState({
           all_stocks: stocksArray.symbolsList.slice(0,200)
-        })
-      })
-
-    fetch("http://localhost:3000/portfolios")
-      .then(r => r.json())
-      .then(portfoliosArray => {
-        let filteredArray = portfoliosArray.filter(portfolio => {
-          return portfolio.user.username === this.state.user.username
-        })
-        this.setState({
-          portfolio: filteredArray[0]
         })
       })
 
@@ -105,18 +91,17 @@ class App extends React.Component {
   }
   
   addStockToPortfolio = (stockInfo) => {
-    console.log(stockInfo)
-    // fetch("http://localhost:3000/stocks", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify(stockInfo)
-    // })
-    // .then(r => r.json())
-    // .then(results => {
-    //   console.log(results)
-    // })
+    fetch("http://localhost:3000/stocks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(stockInfo)
+    })
+    .then(r => r.json())
+    .then(results => {
+      console.log(results)
+    })
   }
 
   renderRegisterForm = () => {
@@ -128,11 +113,11 @@ class App extends React.Component {
   }
 
   renderProfile = () => {
-    return <ProfileContainer user={this.state.user} token={this.state.token} portfolio={this.state.portfolio} addPortfolio={this.addPortfolio}/>
+    return <ProfileContainer user={this.state.user} token={this.state.token} addPortfolio={this.addPortfolio}/>
   }
 
   renderStocks = () => {
-    return <StocksContainer stocks={this.state.all_stocks} addStockToPortfolio={this.addStockToPortfolio} portfolio={this.state.portfolio}/>
+    return <StocksContainer stocks={this.state.all_stocks} addStockToPortfolio={this.addStockToPortfolio}/>
   }
 
   render(){
