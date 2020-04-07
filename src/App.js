@@ -95,6 +95,24 @@ class App extends React.Component {
     })
   }
 
+  updateStock = (userID, amount) => {
+    let newAmount = this.state.user.cash - amount
+    let newObject = {...this.state.user, cash: newAmount}
+    fetch(`http://localhost:3000/users/${userID}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newObject)
+    })
+    .then(r => r.json())
+    .then(results => {
+      this.setState({
+        user: results
+      })
+    })
+  }
+
   deleteStock = (stockID) => {
     fetch(`http://localhost:3000/stocks/${stockID}`, {
       method: "DELETE"
@@ -124,7 +142,12 @@ class App extends React.Component {
   }
 
   renderStocks = () => {
-    return <StocksContainer stocks={this.state.allStocks} addStockToPortfolio={this.addStockToPortfolio} user={this.state.user}/>
+    return <StocksContainer 
+      stocks={this.state.allStocks} 
+      addStockToPortfolio={this.addStockToPortfolio}
+      updateStock={this.updateStock}
+      user={this.state.user}
+    />
   }
 
   render(){
