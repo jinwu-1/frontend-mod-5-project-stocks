@@ -3,12 +3,17 @@ import Stock from './Stock'
 
 class StocksContainer extends React.Component {
 
-    state = {
-    }
-
     render() {
         let stocksComponentArrray = this.props.stocks.map(stock => {
-            return <Stock key={stock.symbol} stock={stock} user={this.props.user} addStockToPortfolio={this.props.addStockToPortfolio} updateCash={this.props.updateCash}/>
+            return (
+                <Stock 
+                    key={stock.symbol} 
+                    stock={stock} 
+                    user={this.props.user} 
+                    addStockToPortfolio={this.props.addStockToPortfolio} 
+                    updateCash={this.props.updateCash}
+                />
+            )
         })
 
         return (

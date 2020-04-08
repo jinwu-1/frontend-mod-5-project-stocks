@@ -96,8 +96,8 @@ class App extends React.Component {
     })
   }
 
-  updateCash = (userID, amount) => {
-    let newAmount = (this.state.user.cash - amount).toString()
+  updateCash = (userID, price) => {
+    let newAmount = (this.state.user.cash - price).toString()
     let newObject = {...this.state.user, cash: newAmount}
     fetch(`http://localhost:3000/users/${userID}`, {
       method: "PATCH",
@@ -108,7 +108,7 @@ class App extends React.Component {
     })
     .then(r => r.json())
     .then(results => {
-      console.log(results, "before setState")
+      console.log(results, "after 2nd .then")
       this.setState({
         user: results
       })
