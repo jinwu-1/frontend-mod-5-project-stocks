@@ -96,9 +96,11 @@ class App extends React.Component {
     })
   }
 
-  updateCash = (userID, price) => {
-    let newAmount = (this.state.user.cash - price).toString()
-    let newObject = {...this.state.user, cash: newAmount}
+  buyStocks = (userID, price) => {
+    let newPrice = parseFloat((Math.round(price * 100)/100).toFixed(2))
+    let newAmount = parseFloat((Math.round((this.state.user.cash) * 100)/100).toFixed(2))
+    let newCash = (newAmount - newPrice).toString()
+    let newObject = {...this.state.user, cash: newCash}
     fetch(`http://localhost:3000/users/${userID}`, {
       method: "PATCH",
       headers: {
@@ -108,7 +110,46 @@ class App extends React.Component {
     })
     .then(r => r.json())
     .then(results => {
-      console.log(results, "after 2nd .then")
+      this.setState({
+        user: results
+      })
+    })
+  }
+
+  sellStocks = (userID, price) => {
+    let newPrice = parseFloat((Math.round(price * 100)/100).toFixed(2))
+    let newAmount = parseFloat((Math.round((this.state.user.cash) * 100)/100).toFixed(2))
+    let newCash = (newAmount + newPrice).toString()
+    let newObject = {...this.state.user, cash: newCash}
+    fetch(`http://localhost:3000/users/${userID}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newObject)
+    })
+    .then(r => r.json())
+    .then(results => {
+      this.setState({
+        user: results
+      })
+    })
+  }
+
+  handleDeposit = (userID, deposit) => {
+    let newDeposit = parseFloat((Math.round(deposit * 100)/100).toFixed(2))
+    let newAmount = parseFloat((Math.round((this.state.user.cash) * 100)/100).toFixed(2))
+    let newCash = (newAmount + newDeposit).toString()
+    let newObject = {...this.state.user, cash: newCash}
+    fetch(`http://localhost:3000/users/${userID}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newObject)
+    })
+    .then(r => r.json())
+    .then(results => {
       this.setState({
         user: results
       })
@@ -140,20 +181,25 @@ class App extends React.Component {
   }
 
   renderProfile = () => {
-    return <ProfileContainer user={this.state.user} token={this.state.token} deleteStock={this.deleteStock}/>
+    return <ProfileContainer 
+      user={this.state.user} 
+      token={this.state.token} 
+      deleteStock={this.deleteStock}
+      sellStocks={this.sellStocks}
+      handleDeposit={this.handleDeposit}
+    />
   }
 
   renderStocks = () => {
     return <StocksContainer 
       stocks={this.state.allStocks} 
       addStockToPortfolio={this.addStockToPortfolio}
-      updateCash={this.updateCash}
+      buyStocks={this.buyStocks}
       user={this.state.user}
     />
   }
 
   render(){
-    console.log(this.state.user)
     return (
       <div className="App">
         <NavBar/>

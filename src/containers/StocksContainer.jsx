@@ -11,7 +11,7 @@ class StocksContainer extends React.Component {
                     stock={stock} 
                     user={this.props.user} 
                     addStockToPortfolio={this.props.addStockToPortfolio} 
-                    updateCash={this.props.updateCash}
+                    buyStocks={this.props.buyStocks}
                 />
             )
         })

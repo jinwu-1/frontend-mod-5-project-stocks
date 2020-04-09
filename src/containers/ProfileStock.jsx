@@ -4,6 +4,7 @@ class ProfileStock extends React.Component {
 
     handleDelete = () => {
         this.props.deleteStock(this.props.stock.id)
+        this.props.sellStocks(this.props.user.id, this.props.stock.price)
     }
 
     render() {

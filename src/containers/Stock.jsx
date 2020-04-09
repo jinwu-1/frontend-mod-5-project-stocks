@@ -14,7 +14,7 @@ class Stock extends React.Component {
                     stock={this.props.stock} 
                     user={this.props.user} 
                     addStockToPortfolio={this.props.addStockToPortfolio} 
-                    updateCash={this.props.updateCash}
+                    buyStocks={this.props.buyStocks}
                 />
             </div>
         )

@@ -8,7 +8,7 @@ class NewPortfolioStock extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.updateCash(this.props.user.id, this.props.stock.price)
+        this.props.buyStocks(this.props.user.id, this.props.stock.price)
         this.props.addStockToPortfolio(this.state.stock)
     }
 
