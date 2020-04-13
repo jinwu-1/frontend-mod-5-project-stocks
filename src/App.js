@@ -19,7 +19,8 @@ class App extends React.Component {
       stocks: []
     },
     token: "",
-    allStocks: []
+    allStocks: [],
+    searchTerm: ""
   }
 
   componentDidMount() {
@@ -172,6 +173,19 @@ class App extends React.Component {
     })
   }
 
+  handleSearchTerm = (inputTerm) => {
+    this.setState({
+      searchTerm: inputTerm
+    })
+  }
+
+  filteredStocks = () => {
+    let filteredArray = this.state.allStocks.filter(stock => {
+      return stock.symbol.toLowerCase().includes(this.state.searchTerm.toLowerCase()) || stock.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    })
+    return filteredArray
+  }
+
   renderRegisterForm = () => {
     return <RegisterForm handleSubmit={this.handleRegister}/>
   }
@@ -192,10 +206,11 @@ class App extends React.Component {
 
   renderStocks = () => {
     return <StocksContainer 
-      stocks={this.state.allStocks} 
+      stocks={this.filteredStocks()} 
       addStockToPortfolio={this.addStockToPortfolio}
       buyStocks={this.buyStocks}
       user={this.state.user}
+      handleSearchTerm={this.handleSearchTerm}
     />
   }
 
