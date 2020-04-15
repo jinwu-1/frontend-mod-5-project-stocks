@@ -23,7 +23,7 @@ class LoginForm extends Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="cash">Amount</label>
+        <label htmlFor="cash">Amount:</label>
         <input type="number" autoComplete="off" name="cash" value={cash} onChange={this.handleChange}/>
         <input type="submit" value="Deposit"/>
       </form>
