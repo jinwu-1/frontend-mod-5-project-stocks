@@ -30,7 +30,7 @@ class ProfileStock extends React.Component {
                 <h4>Cost: ${price}</h4>
                 <h4>Current Price: ${this.state.realTimeStock.price}</h4>
                 <h5>{exchange}</h5>
-                <button onClick={this.handleDelete}>remove</button>
+                <button onClick={this.handleDelete}>Sell</button>
             </div>
         )
     }
