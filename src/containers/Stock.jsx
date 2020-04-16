@@ -12,7 +12,7 @@ class Stock extends Component {
       <div className='Card'>
         <Card.Header>{symbol} : {name} </Card.Header>
         <Card.Body>
-        <Card.Title>{price}</Card.Title>
+        <Card.Title>${price}</Card.Title>
         <Card.Text>
           <h6>{exchange}</h6>
           <NewPortfolioStock 
