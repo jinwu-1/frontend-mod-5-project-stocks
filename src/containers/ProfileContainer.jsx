@@ -12,12 +12,16 @@ class ProfileContainer extends React.Component {
         })
         
         return (
+            <>
             <div>
                 <h1> {first_name} {last_name} </h1>
                 <h3> cash: ${cash} </h3>
-                <Deposit handleDeposit={this.props.handleDeposit} user={this.props.user}/>
+                <Deposit handsleDeposit={this.props.handleDeposit} user={this.props.user}/>
+            </div>
+            <div className='cards'>
                 {stocksComponentArrray}
             </div>
+            </>
         )
     }
 }

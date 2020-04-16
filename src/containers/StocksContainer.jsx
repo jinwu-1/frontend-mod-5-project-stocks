@@ -18,13 +18,17 @@ class StocksContainer extends React.Component {
         })
 
         return (
+            <>
             <div>
-                <h1>Available Cash: ${this.props.user.cash}</h1>
+            <h1>Available Cash: ${this.props.user.cash}</h1>
                 <Search
                     handleSearchTerm={this.props.handleSearchTerm}
                 />
+            </div>
+            <div className='cards'>
                 {stocksComponentArrray}
             </div>
+            </>
         )
     }
 }

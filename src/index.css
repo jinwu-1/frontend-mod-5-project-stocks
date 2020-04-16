@@ -74,8 +74,8 @@ ul.nav li a:hover {
 }
 
 .Card{
-  background-color: #21CE99;
-  color: white;
+  background-color: white;
+  color: #21CE99;
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
   display: flex;
@@ -85,6 +85,8 @@ ul.nav li a:hover {
   width: 250px;
   margin: 20px;
   padding-top: 20px;
+  border-radius: 12px;
+  border: 1px solid #21CE99;
   }
 
   /* padding: 10px;

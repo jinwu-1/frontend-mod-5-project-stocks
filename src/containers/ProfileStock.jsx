@@ -1,4 +1,5 @@
 import React from 'react'
+import Card from 'react-bootstrap/Card'
 
 class ProfileStock extends React.Component {
 
@@ -25,13 +26,18 @@ class ProfileStock extends React.Component {
         console.log(this.state.realTimeStock)
         let {symbol, name, price, exchange} = this.props.stock
         return (
-            <div>
-                <h3>{symbol}: {name}</h3>
-                <h4>Cost: ${price}</h4>
-                <h4>Current Price: ${this.state.realTimeStock.price}</h4>
-                <h5>{exchange}</h5>
-                <button onClick={this.handleDelete}>Sell</button>
+            <div className='Card'>
+                <Card.Header>{symbol} : {name} </Card.Header>
+                <Card.Body>
+                <Card.Title>Cost: $ {price}</Card.Title>
+                <Card.Text>
+                    <h6>Current Price: ${this.state.realTimeStock.price}</h6>
+                    <h5>{exchange}</h5>
+                <button className='button' onClick={this.handleDelete}>Sell</button>           
+                </Card.Text>
+                </Card.Body>
             </div>
+            
         )
     }
 }
