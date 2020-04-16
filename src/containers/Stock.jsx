@@ -10,11 +10,15 @@ class Stock extends Component {
     return (
 
       <div className='Card'>
-        <Card.Header>{symbol} : {name} </Card.Header>
+        <Card.Header><strong>{name}</strong></Card.Header>
         <Card.Body>
-        <Card.Title>${price}</Card.Title>
+        <Card.Title>{symbol}</Card.Title>
+        <br></br>
         <Card.Text>
-          <h6>{exchange}</h6>
+          <div><strong>${price}</strong></div>
+          <br></br>
+          <div>{exchange}</div>
+          <br></br>
           <NewPortfolioStock 
                     stock={this.props.stock} 
                     user={this.props.user} 

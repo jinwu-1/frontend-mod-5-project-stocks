@@ -15,7 +15,7 @@ class ProfileContainer extends React.Component {
             <div>
                 <div>
                     <h1> {first_name} {last_name} </h1>
-                    <h3> cash: ${cash} </h3>
+                    <h3> Cash: ${cash} </h3>
                     <Deposit handleDeposit={this.props.handleDeposit} user={this.props.user}/>
                 </div>
                 <div className='cards'>
