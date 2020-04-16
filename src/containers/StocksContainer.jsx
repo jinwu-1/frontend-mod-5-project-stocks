@@ -9,7 +9,7 @@ class StocksContainer extends Component {
     })
 
     return (
-      <div>
+      <div className='cards'>
           {stocksComponentArray}
       </div>
     );

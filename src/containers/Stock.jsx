@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NewPortfolioStock from '../components/NewPortfolioStock';
+import Card from 'react-bootstrap/Card'
 
 class Stock extends Component {
 
@@ -7,14 +8,19 @@ class Stock extends Component {
     let {symbol, name, price, exchange} = this.props.stock
 
     return (
-      <div className="stock-card">
-          <h4>{symbol} : {name}</h4>
-          <h5>${price}</h5>
+
+      <div className='Card'>
+        <Card.Header>{symbol} : {name} </Card.Header>
+        <Card.Body>
+        <Card.Title>{price}</Card.Title>
+        <Card.Text>
           <h6>{exchange}</h6>
           <NewPortfolioStock 
-            stock={this.props.stock} 
-            addStockToPortfolio={this.props.addStockToPortfolio}
-          />
+             stock={this.props.stock} 
+             addStockToPortfolio={this.props.addStockToPortfolio}
+           />
+        </Card.Text>
+      </Card.Body>
       </div>
     );
   }

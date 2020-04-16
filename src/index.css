@@ -1,12 +1,11 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #BEBEBE;
+  background-color: #D8FFD8;
   text-align: center;
+  color: #447604
 }
 
 ul.nav {
@@ -16,7 +15,8 @@ ul.nav {
   overflow: hidden;
   display: flex;
   justify-content: space-evenly;
-  background-color: #333;
+  background-color: #21CE99;
+  font-weight: bolder;
 }
 
 ul.nav li {
@@ -32,5 +32,65 @@ ul.nav li a {
 }
 
 ul.nav li a:hover {
-  background-color: #111;
+  background-color: #1A9670;
 }
+
+.form{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.formComponent{
+  padding: 2%;
+  display: flex;
+}
+
+.formInput{
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding: 0 30px 0 53px;
+  margin: 10px;
+/*   
+  height: 3vh;
+  overflow: auto; */
+  /* margin: 50% */
+}
+
+.cards{
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 50px;
+  padding: 20px;
+}
+
+.Card{
+  background-color: #21CE99;
+  color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 200px;
+  width: 250px;
+  margin: 20px;
+  padding-top: 20px;
+  }
+
+  /* padding: 10px;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #3D7DCA;
+  height: 200px;
+  width: 200px;
+} */

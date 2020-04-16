@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from 'react-bootstrap/Button'
 
 class LoginForm extends Component {
   state = {
@@ -25,12 +26,21 @@ class LoginForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <h1>Login</h1>
-        <label htmlFor="username">username:</label>
-        <input type="text" autoComplete="off" name="username" value={username} onChange={this.handleChange}/>
-        <label htmlFor="password">password:</label>
-        <input type="password" autoComplete="off" name="password" value={password} onChange={this.handleChange}/>
-        <input type="submit" value="Submit"/>
-      </form>
+
+        <div className='form'>
+          <div className='formComponent'>
+            <label htmlFor="username">username:</label>
+            <input className='formInput' type="text" autoComplete="off" name="username" value={username} onChange={this.handleChange}/>
+          </div>
+
+          <div className='formComponent'>
+            <label htmlFor="password">password:</label>
+            <input className='formInput' type="password" autoComplete="off" name="password" value={password} onChange={this.handleChange}/>
+          </div>
+          <Button variant="primary" size="lg" type='submit' value='Submit'>Login</Button>
+        {/* <input type="submit" value="Submit"/>  */}
+        </div>
+        </form>
     );
   }
 }
