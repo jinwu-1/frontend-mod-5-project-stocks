@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card'
+import { Button } from 'semantic-ui-react'
 
 class ProfileStock extends React.Component {
 
@@ -27,14 +28,14 @@ class ProfileStock extends React.Component {
         let newCost = parseFloat((Math.round(cost * 100)/100).toFixed(2))
         let currentPrice = this.state.realTimeStock.price
         let newPrice = parseFloat((Math.round(currentPrice * 100)/100).toFixed(2))
-        return ((newPrice - newCost)/newCost).toFixed(3)
+        return (((newPrice - newCost)/newCost)*100).toFixed(2)
     }
 
     render() {
         console.log(this.state.realTimeStock)
         let {symbol, name, price} = this.props.stock
         return (
-            <div className='Card'>
+            <div className='ProfileCard'>
                 <Card.Header>{symbol}: {name} </Card.Header>
                 <Card.Body>
                 <Card.Title></Card.Title>
@@ -43,7 +44,13 @@ class ProfileStock extends React.Component {
                     <p>Current Price: <strong>${this.state.realTimeStock.price}</strong></p>
                     <p>Cost: <strong>${price}</strong></p>
                     <p>Total Return: <strong>{this.percentChange()}%</strong></p>
-                <button className='button' onClick={this.handleDelete}>Sell</button>           
+                {/* <button className='button' onClick={this.handleDelete}>Sell</button> */}
+                <form onSubmit={this.handleDelete}>
+                    <Button animated="fade" color="teal">
+                        <Button.Content visible>Sell This Stock</Button.Content>
+                        <Button.Content hidden>${this.state.realTimeStock.price}/share</Button.Content>
+                    </Button>
+                </form>         
                 </Card.Text>
                 </Card.Body>
             </div>

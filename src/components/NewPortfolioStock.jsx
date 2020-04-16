@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'semantic-ui-react'
 
 class NewPortfolioStock extends Component {
     
@@ -15,7 +16,10 @@ class NewPortfolioStock extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <input type="submit" value="Buy"/>
+                <Button animated="fade" color="teal">
+                    <Button.Content visible>Buy This Stock</Button.Content>
+                    <Button.Content hidden>${this.props.stock.price}/share</Button.Content>
+                </Button>
             </form>
         );
     }

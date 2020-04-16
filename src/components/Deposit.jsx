@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Input, Label } from 'semantic-ui-react'
 
-class LoginForm extends Component {
+class DepositForm extends Component {
   state = {
     cash: ""
   }
@@ -23,11 +24,18 @@ class LoginForm extends Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="cash">Amount:</label>
-        <input type="number" autoComplete="off" name="cash" value={cash} onChange={this.handleChange}/>
-        <input type="submit" value="Deposit"/>
+        <Input labelPosition="right" placeholder="Amount">
+          <Label basic>$</Label>
+          <input
+            type="number" 
+            name="cash" 
+            value={cash} 
+            onChange={this.handleChange}
+          />
+          <Label>.00</Label>
+        </Input>
       </form>
     );
   }
 }
-export default LoginForm;
+export default DepositForm;

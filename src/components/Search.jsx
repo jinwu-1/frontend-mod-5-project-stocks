@@ -1,4 +1,5 @@
 import React from 'react'
+import { Icon, Input } from 'semantic-ui-react'
 
 const Search = (props) => {
 
@@ -8,7 +9,9 @@ const Search = (props) => {
 
     return (
         <div>
-            <input 
+            <Input
+                icon={<Icon name='search' inverted circular link />}
+                placeholder="Search..." 
                 type="text" 
                 name="searchTerm"
                 value={props.searchTerm}

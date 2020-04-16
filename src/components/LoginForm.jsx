@@ -25,20 +25,27 @@ class LoginForm extends Component {
 
     return (
       <div className="form">
+        <br></br>
         <Form onSubmit={this.handleSubmit}>
           <Form.Input 
             type="text" 
-            autoComplete="off" 
-            name="username" value={username} 
+            name="username" 
+            value={username} 
             onChange={this.handleChange}
-            label="Username"
+            // label="Username"
+            placeholder="Username"
+            icon="user"
+            iconPosition="left"
           />
           <Form.Input 
             type="password" 
-            autoComplete="off" 
-            name="password" value={password} 
+            name="password" 
+            value={password} 
             onChange={this.handleChange}
-            label="Password"
+            // label="Password"
+            placeholder="Password"
+            icon="lock"
+            iconPosition="left"
           />
           <Button
             color='teal'

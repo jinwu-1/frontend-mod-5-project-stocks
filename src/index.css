@@ -14,9 +14,10 @@ ul.nav {
   padding: 0;
   overflow: hidden;
   display: flex;
-  justify-content: space-evenly;
   background-color: #21CE99;
   font-weight: bolder;
+  height: 45px;
+  justify-content: flex-start
 }
 
 ul.nav li {
@@ -81,18 +82,31 @@ ul.nav li a:hover {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  height: 200px;
+  height: 210px;
   width: 250px;
   margin: 20px;
   padding-top: 20px;
   border-radius: 12px;
   border: 1px solid #21CE99;
-  }
+}
 
-  /* padding: 10px;
+.ProfileCard{
+  background-color: white;
+  color: #21CE99;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
   display: flex;
-  flex-direction: row;
-  border: 1px solid #3D7DCA;
-  height: 200px;
-  width: 200px;
-} */
+  flex-direction: column;
+  overflow: hidden;
+  height: 250px;
+  width: 250px;
+  margin: 20px;
+  padding-top: 20px;
+  border-radius: 12px;
+  border: 1px solid #21CE99;
+}
+
+.logo {
+  max-width: relative;
+  max-height: 20px;
+}
