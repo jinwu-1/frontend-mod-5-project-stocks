@@ -98,7 +98,7 @@ ul.nav li a:hover {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  height: 250px;
+  height: 225px;
   width: 250px;
   margin: 20px;
   padding-top: 20px;
@@ -109,4 +109,33 @@ ul.nav li a:hover {
 .logo {
   max-width: relative;
   max-height: 20px;
+}
+
+.homepage-button {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  background-color: #21CE99;
+  font-weight: bolder;
+  height: 45px;
+  justify-content: center;
+  width: 150px;
+}
+
+.homepage-button {
+  float: left;
+}
+
+.homepage-button a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.homepage-button a:hover {
+  background-color: #1A9670;
 }

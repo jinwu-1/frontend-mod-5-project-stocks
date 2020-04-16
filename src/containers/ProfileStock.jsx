@@ -32,18 +32,18 @@ class ProfileStock extends React.Component {
     }
 
     render() {
-        console.log(this.state.realTimeStock)
         let {symbol, name, price} = this.props.stock
         return (
             <div className='ProfileCard'>
-                <Card.Header>{symbol}: {name} </Card.Header>
+                <Card.Header><strong>{name}</strong></Card.Header>
                 <Card.Body>
-                <Card.Title></Card.Title>
+                <Card.Title>{symbol}</Card.Title>
                 <Card.Text>
                     <br></br>
-                    <p>Current Price: <strong>${this.state.realTimeStock.price}</strong></p>
-                    <p>Cost: <strong>${price}</strong></p>
-                    <p>Total Return: <strong>{this.percentChange()}%</strong></p>
+                    <div>Current Price: <strong>${this.state.realTimeStock.price}</strong></div>
+                    <div>Cost: <strong>${price}</strong></div>
+                    <div>Total Return: <strong>{this.percentChange()}%</strong></div>
+                    <br></br>
                 {/* <button className='button' onClick={this.handleDelete}>Sell</button> */}
                 <form onSubmit={this.handleDelete}>
                     <Button animated="fade" color="teal">
